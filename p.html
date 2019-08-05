@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>
+
+AngularJs $http.post() Service Response Example
+
+</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<script type="text/javascript">
+
+var app = angular.module('postserviceApp', []);
+
+app.controller('postserviceCtrl', function ($scope, $http) {
+
+$scope.name = "shiva";
+
+$scope.age = 22;
+$scope.lastname = "chukka";
+$scope.names = [
+        'Jani',
+        'Carl',
+        'Margareth',
+        'Hege',
+        'Joe',
+        'Gustav',
+        'Birgit',
+        'Mary',
+        'Kai'
+    ];
+    
+    
+$scope.postdata = function (name, age, lastname,names) {
+
+var data = {
+
+name: name,
+names:names,
+Age: age,
+lastname: lastname,
+
+};
+
+//Call the services
+
+$http.post('https://jsonplaceholder.typicode.com/posts', JSON.stringify(data)).then(function (response) {
+
+if (response.data)
+$scope.content = response.data;
+$scope.msg = "Post Data Submitted Successfully!";
+
+}, function (response) {
+
+$scope.msg = "Service not Exists";
+
+});
+
+};
+
+});
+
+</script>
+
+</head>
+
+<body>
+
+<div ng-app="postserviceApp" ng-controller="postserviceCtrl">
+
+<div>
+
+Name : <input ng-model="name" /><br/><br/>
+
+Age : <input ng-model="age" /><br/><br/>
+
+<input type="button" value="Send" ng-click="postdata(name, age, lastname,names)" /> <br/><br/>
+
+</div>
+<p>hello ...{{content }}</p>
+<p>Output Message : {{msg}}</p>
+<ul>
+  <li ng-repeat="x in content">
+    {{ x }}
+  </li>
+</ul>
+
+</div>
+
+</body>
+
+</html>

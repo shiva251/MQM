@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="#">
+    <input type="" name="num" required autofocus>
+    <input type="submit" value="submit">
+    <br>
+    <br>
+    <br>
+    <h3>
+Refresh the page its increase the number of hits...
+</h3>
+<script>
+if(sessionStorage.hits)
+{
+    sessionStorage.hits=Number(sessionStorage.hits) +1;
+
+}
+else
+{
+    sessionStorage.hits = 1;
+
+}
+document.write("Total <b>Session Storage</b> hits:"  +sessionStorage.hits);
+</script>
+<br>
+<br>
+<script>
+if(localStorage.hits)
+{
+    localStorage.hits=Number(localStorage.hits) +1;
+
+}
+else
+{
+    localStorage.hits = 1;
+
+}
+document.write("Total <b> Local Storage</b> hits:"  +localStorage.hits);
+// localStorage.clear();
+// sessionStorage.clear();
+</script>
+</form>
+</body>
+</html>
